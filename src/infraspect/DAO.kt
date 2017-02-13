@@ -1,0 +1,5 @@
+package infraspect
+
+interface DAO {
+
+}
