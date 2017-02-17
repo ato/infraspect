@@ -1,0 +1,32 @@
+{
+  "jvms": [
+    {
+      "name": "myapp",
+      "files": [
+        {
+          "path": "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.121-1.b14.fc24.x86_64/jre/lib/rt.jar",
+          "fd": 3
+        }
+      ],
+      "uid": 1000,
+      "heap_min": "128m",
+      "started": 1487029895.6424654,
+      "pid": 4285,
+      "jvm_vendor": "openjdk",
+      "user": "user",
+      "heap_max": "1024m",
+      "sockets": [
+        {
+          "fd": 82,
+          "local_port": 39743,
+          "remote_port": 0,
+          "inode": 602381,
+          "local_ip": "127.0.0.1",
+          "remote_ip": "0.0.0.0"
+        }
+      ],
+      "jvm_version": "1.8.0_121"
+    }
+  ],
+  "host": "myhost"
+}

@@ -1,4 +1,4 @@
-import zipfile, os, socket, struct, pwd
+import zipfile, os, socket, struct, pwd, json
 
 java_version_cache = {}
 java_vendor_map = {'Oracle Corporation' : 'oracle', 'N/A' : 'openjdk'}
@@ -140,11 +140,14 @@ def file_handles(pid):
     return sockets, files
 
 def main():
+    report = {
+        'host': hostname,
+    }
+    jvms = []
     for pid in java_pid_iter():
         stat = os.stat("/proc/%d" % pid)
         sockets, files = file_handles(pid)
         info = {
-                'host': hostname,
                 'pid': pid,
                 'uid': stat.st_uid,
                 'started': stat.st_mtime,
@@ -154,7 +157,8 @@ def main():
         }
         info.update(parse_cmdline(pid))
         info.update(java_version(pid))
-        
-        print pid, info
+        jvms.append(info)
+    report['jvms'] = jvms
+    print json.dumps(report)
 
 main()
