@@ -84,6 +84,9 @@ fun main(args: Array<String>) {
 
     val gson = Gson()
 
+    Spark.ipAddress(System.getenv("ADDR") ?: "127.0.0.1")
+    Spark.port(System.getenv("PORT")?.toInt() ?: 8011)
+
     Spark.post("/report") { request: Request, response: Response ->
         val report = gson.fromJson(request.body(), Report::class.java)
         infraspect.acceptReport(report)
